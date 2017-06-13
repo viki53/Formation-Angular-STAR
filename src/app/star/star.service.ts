@@ -16,4 +16,11 @@ export class StarService {
 			.map(records => records.map(record => record.fields));
 	}
 
+	public getBusLine(id: string): Observable<any> {
+		return this.http.get(this.apiRoot + `/api/records/1.0/search/?dataset=tco-bus-topologie-lignes-td&sort=nomcourt%2Cid&facet=nomfamillecommerciale&refine.id=${id}`)
+			.map(data => data.json().records)
+			.map(records => records[0])
+			.map(record => record.fields);
+	}
+
 }

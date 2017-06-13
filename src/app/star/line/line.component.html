@@ -1,3 +1,3 @@
-<p>
-  line works!
-</p>
+<h2 [style.color]="(line | async)?.couleurligne">Ligne {{ (line | async)?.nomcourt }} : {{ (line | async)?.nomlong }}</h2>
+
+<a routerLink="../../">← Retour</a>
