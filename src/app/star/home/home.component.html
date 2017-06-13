@@ -1,0 +1,9 @@
+<p>
+	Star home
+</p>
+
+<ul *ngIf="lines | async">
+	<li *ngFor="let line of lines | async">
+		<a routerLink="./line/{{ line.id }}">{{ line.nomlong }}</a>
+	</li>
+</ul>
