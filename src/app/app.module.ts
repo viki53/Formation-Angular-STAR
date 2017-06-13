@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
 import './rxjs';
@@ -22,6 +23,7 @@ const routes: Routes = [
 	],
 	imports: [
 		BrowserModule,
+		CommonModule,
 		RouterModule.forRoot(routes),
 		StarModule
 	],

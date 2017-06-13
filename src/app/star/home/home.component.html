@@ -2,6 +2,8 @@
 	Star home
 </p>
 
+<p *ngIf="!(lines | async)">Chargement des lignes…</p>
+
 <ul *ngIf="lines | async">
 	<li *ngFor="let line of lines | async">
 		<a routerLink="./line/{{ line.id }}" [style.color]="line.couleurligne">{{ line.nomcourt }} : {{ line.nomlong }}</a>

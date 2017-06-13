@@ -1,3 +1,4 @@
-<h2 [style.color]="(line | async)?.couleurligne">Ligne {{ (line | async)?.nomcourt }} : {{ (line | async)?.nomlong }}</h2>
+<h2 *ngIf="!(line | async)?.id">Chargement…</h2>
+<h2 *ngIf="(line | async)?.id" [style.color]="(line | async)?.couleurligne">Ligne {{ (line | async)?.nomcourt }} : {{ (line | async)?.nomlong }}</h2>
 
 <a routerLink="../../">← Retour</a>
