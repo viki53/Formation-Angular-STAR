@@ -17,9 +17,6 @@ export class HomeComponent implements OnInit {
 
 	ngOnInit() {
 		this.lines = this.api.getBusLines();
-		this.lines.map((res) => {
-			console.table(res);
-		});
 	}
 
 }
