@@ -11,7 +11,7 @@ export class StarService {
 	) { }
 
 	public getBusLines(): Observable<any[]> {
-		return this.http.get(this.apiRoot + '/api/records/1.0/search/?dataset=tco-bus-topologie-lignes-td&facet=nomfamillecommerciale&rows=200')
+		return this.http.get(this.apiRoot + '/api/records/1.0/search/?dataset=tco-bus-topologie-lignes-td&facet=nomfamillecommerciale&rows=200&sort=nomcourt,id')
 			.map(data => data.json().records)
 			.map(records => records.map(record => record.fields));
 	}
