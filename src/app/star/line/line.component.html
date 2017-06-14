@@ -2,7 +2,7 @@
 <h2 *ngIf="line?.id" [style.color]="line?.couleurligne">Ligne {{ line?.nomcourt }} : {{ line?.nomlong }}</h2>
 
 <div>
-	<button type="button" (click)="getTimetable()" [disabled]="!line">Rafraîchir</button>
+	<button type="button" (click)="getTimetable()" [disabled]="loading">Rafraîchir</button>
 </div>
 
 <p *ngIf="loading">Chargement des horaires…</p>
