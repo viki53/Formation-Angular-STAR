@@ -10,13 +10,19 @@ import { StarService } from '../star.service';
 })
 export class HomeComponent implements OnInit {
 	public lines: Observable<any[]>;
+	public query: string = '';
 
 	constructor(
 		private api: StarService
-	) { }
-
-	ngOnInit() {
+	) {
 		this.lines = this.api.getBusLines();
 	}
 
+	ngOnInit() {
+
+	}
+
+	public search() {
+		this.lines = this.api.getBusLines(this.query);
+	}
 }

@@ -2,6 +2,10 @@
 	Star home
 </p>
 
+<form #searchForm="ngForm">
+	<input type="search" name="query" placeholder="Rechercher une ligne" [(ngModel)]="query" (ngModelChange)="search($event)">
+</form>
+
 <p *ngIf="!(lines | async)">Chargement des lignes…</p>
 
 <ul *ngIf="lines | async">
