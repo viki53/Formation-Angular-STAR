@@ -13,6 +13,9 @@ import { StopComponent } from './stop/stop.component';
 
 export { HomeComponent } from './home/home.component';
 export { LineComponent } from './line/line.component';
+export { StopComponent } from './stop/stop.component';
+
+export { StarService } from './star.service';
 
 const routes: Routes = [
 	{
