@@ -3,11 +3,10 @@
 
 <ul *ngIf="timetable | async">
 	<li *ngFor="let time of timetable | async">
-		<!-- {{ time | json }} -->
-		<a routerLink="../../stop/{{ time.idarret }}/line/{{ (line | async ).id }}">Arrêt {{ time.idarret }}</a><br>
-		Prévu : {{ time.arriveetheorique | date:'shortTime' }}<br>
-		Réel : {{ time.arrivee | date:'shortTime' }}
+		<a routerLink="/star/stop/{{ time.idarret }}/line/{{ (line | async )?.id }}">Arrêt {{ time.idarret }}</a><br>
+		Prévu : {{ time.arriveetheorique | date:'H:mm:ss' }}<br>
+		Réel : {{ time.arrivee | date:'H:mm:ss' }}
 	</li>
 </ul>
 
-<a routerLink="../../">← Retour</a>
+<a routerLink="/star">← Retour</a>

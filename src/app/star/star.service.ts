@@ -35,4 +35,10 @@ export class StarService {
 			.map(records => records[0])
 			.map(record => record.fields);
 	}
+
+	public getBusStopTimetable(id: string, lineid: string = ''): Observable<any[]> {
+		return this.http.get(this.apiRoot + `/api/records/1.0/search/?dataset=tco-bus-circulation-passages-tr&facet=idligne&facet=nomcourtligne&facet=sens&facet=destination&facet=precision&refine.idarret=${id}` + (lineid ? '&refine.idligne=' + encodeURIComponent(lineid) :''))
+			.map(data => data.json().records)
+			.map(records => records.map(record => record.fields));
+	}
 }
