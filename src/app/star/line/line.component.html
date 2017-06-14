@@ -5,7 +5,12 @@
 	<button type="button" (click)="getTimetable()" [disabled]="!line">Rafraîchir</button>
 </div>
 
-<ul *ngIf="timetable">
+<p *ngIf="loading">Chargement des horaires…</p>
+
+<p *ngIf="!loading && !timetable">
+	Aucune horaire trouvé
+</p>
+<ul *ngIf="!loading && timetable">
 	<li *ngFor="let time of timetable">
 		<a routerLink="/star/line/{{ line?.id }}/stop/{{ time.idarret }}">Arrêt {{ time.idarret }}</a><br>
 		Prévu : {{ time.arriveetheorique | date:'H:mm:ss' }}<br>

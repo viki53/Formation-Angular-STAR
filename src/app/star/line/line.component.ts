@@ -11,6 +11,7 @@ import { StarService } from '../star.service';
 export class LineComponent implements OnInit {
 	private id: string;
 
+	public loading: boolean;
 	public line: any;
 	public timetable: any[];
 
@@ -32,6 +33,10 @@ export class LineComponent implements OnInit {
 	}
 
 	public getTimetable () {
-		this.api.getBusLineTimetable(this.id).subscribe((data) => this.timetable = data);
+		this.loading = true;
+		this.api.getBusLineTimetable(this.id).subscribe((data) => {
+			this.timetable = data;
+			this.loading = false;
+		});
 	}
 }

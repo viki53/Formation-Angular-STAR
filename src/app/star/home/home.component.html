@@ -1,14 +1,13 @@
-<p>
-	Star home
-</p>
-
 <form #searchForm="ngForm">
 	<input type="search" name="query" placeholder="Rechercher une ligne" [(ngModel)]="query" (ngModelChange)="search($event)">
 </form>
 
-<p *ngIf="!lines">Chargement des lignes…</p>
+<p *ngIf="loading">Chargement des lignes…</p>
 
-<ul *ngIf="lines">
+<p *ngIf="!loading && !lines">
+	Aucune ligne trouvée
+</p>
+<ul *ngIf="!loading && lines">
 	<li *ngFor="let line of lines">
 		<a routerLink="./line/{{ line.id }}" [style.color]="line.couleurligne">{{ line.nomcourt }} : {{ line.nomlong }}</a>
 	</li>

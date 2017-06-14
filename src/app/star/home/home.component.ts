@@ -9,6 +9,7 @@ import { StarService } from '../star.service';
 	styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+	public loading: boolean;
 	public lines: any[];
 	public query: string = '';
 
@@ -23,6 +24,10 @@ export class HomeComponent implements OnInit {
 	}
 
 	public search() {
-		this.api.getBusLines(this.query).subscribe((data) => this.lines = data);
+		this.loading = true;
+		this.api.getBusLines(this.query).subscribe((data) => {
+			this.lines = data;
+			this.loading = false;
+		});
 	}
 }

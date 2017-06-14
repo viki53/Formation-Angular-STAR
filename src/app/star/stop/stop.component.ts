@@ -13,6 +13,7 @@ export class StopComponent implements OnInit {
 	private id: string;
 	private lineid: string;
 
+	public loading: boolean;
 	public stop: any;
 	public line: any;
 	public timetable: any[];
@@ -44,11 +45,19 @@ export class StopComponent implements OnInit {
 	}
 
 	public getTimetable () {
+		this.loading = true;
+
 		if (this.lineid) {
-			this.api.getBusStopTimetable(this.id, this.lineid).subscribe((data) => this.timetable = data);
+			this.api.getBusStopTimetable(this.id, this.lineid).subscribe((data) => {
+				this.timetable = data;
+				this.loading = false;
+			});
 		}
 		else {
-			this.api.getBusStopTimetable(this.id).subscribe((data) => this.timetable = data);
+			this.api.getBusStopTimetable(this.id).subscribe((data) => {
+				this.timetable = data;
+				this.loading = false;
+			});
 		}
 	}
 
