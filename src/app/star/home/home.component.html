@@ -6,10 +6,10 @@
 	<input type="search" name="query" placeholder="Rechercher une ligne" [(ngModel)]="query" (ngModelChange)="search($event)">
 </form>
 
-<p *ngIf="!(lines | async)">Chargement des lignes…</p>
+<p *ngIf="!lines">Chargement des lignes…</p>
 
-<ul *ngIf="lines | async">
-	<li *ngFor="let line of lines | async">
+<ul *ngIf="lines">
+	<li *ngFor="let line of lines">
 		<a routerLink="./line/{{ line.id }}" [style.color]="line.couleurligne">{{ line.nomcourt }} : {{ line.nomlong }}</a>
 	</li>
 </ul>

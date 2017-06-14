@@ -13,9 +13,9 @@ export class StopComponent implements OnInit {
 	private id: string;
 	private lineid: string;
 
-	public stop: Observable<any>;
-	public line: Observable<any>;
-	public timetable: Observable<any[]>;
+	public stop: any;
+	public line: any;
+	public timetable: any[];
 
 	constructor(
 		private api: StarService,
@@ -27,12 +27,12 @@ export class StopComponent implements OnInit {
 			if (params.id) {
 				this.id = params.id;
 
-				this.stop = this.api.getBusStop(params.id);
+				this.api.getBusStop(params.id).subscribe((data) => this.stop = data);
 
 				if (params.lineid) {
 					this.lineid = params.lineid;
 
-					this.line = this.api.getBusLine(params.lineid);
+					this.api.getBusLine(params.lineid).subscribe((data) => this.line = data);
 				}
 				else {
 					this.lineid = undefined;
@@ -45,10 +45,10 @@ export class StopComponent implements OnInit {
 
 	public getTimetable () {
 		if (this.lineid) {
-			this.timetable = this.api.getBusStopTimetable(this.id, this.lineid);
+			this.api.getBusStopTimetable(this.id, this.lineid).subscribe((data) => this.timetable = data);
 		}
 		else {
-			this.timetable = this.api.getBusStopTimetable(this.id);
+			this.api.getBusStopTimetable(this.id).subscribe((data) => this.timetable = data);
 		}
 	}
 

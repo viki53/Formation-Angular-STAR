@@ -1,14 +1,14 @@
-<h2 *ngIf="!(stop | async)?.id">Chargement…</h2>
-<h2 *ngIf="(stop | async)?.id" [style.color]="(stop | async)?.couleurligne">Arrêt {{ (stop | async)?.nom }} ({{ (stop | async)?.mobilier }})</h2>
+<h2 *ngIf="!stop?.id">Chargement…</h2>
+<h2 *ngIf="stop?.id" [style.color]="stop?.couleurligne">Arrêt {{ stop?.nom }} ({{ stop?.mobilier }})</h2>
 
-<h3 *ngIf="(line | async)?.id" [style.color]="(line | async)?.couleurligne">Ligne {{ (line | async)?.nomcourt }} : {{ (line | async)?.nomlong }}</h3>
+<h3 *ngIf="line?.id" [style.color]="line?.couleurligne">Ligne {{ line?.nomcourt }} : {{ line?.nomlong }}</h3>
 
 <div>
-	<button type="button" (click)="getTimetable()" [disabled]="!(stop | async)">Rafraîchir</button>
+	<button type="button" (click)="getTimetable()" [disabled]="!stop">Rafraîchir</button>
 </div>
 
-<ul *ngIf="timetable | async">
-	<li *ngFor="let time of timetable | async">
+<ul *ngIf="timetable">
+	<li *ngFor="let time of timetable">
 		<a routerLink="/star/line/{{ time.idligne }}">Ligne {{ time.nomcourtligne }}</a><br>
 		Prévu : {{ time.arriveetheorique | date:'H:mm:ss' }}<br>
 		Réel : {{ time.arrivee | date:'H:mm:ss' }}

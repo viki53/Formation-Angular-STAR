@@ -9,13 +9,13 @@ import { StarService } from '../star.service';
 	styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-	public lines: Observable<any[]>;
+	public lines: any[];
 	public query: string = '';
 
 	constructor(
 		private api: StarService
 	) {
-		this.lines = this.api.getBusLines();
+		this.search();
 	}
 
 	ngOnInit() {
@@ -23,6 +23,6 @@ export class HomeComponent implements OnInit {
 	}
 
 	public search() {
-		this.lines = this.api.getBusLines(this.query);
+		this.api.getBusLines(this.query).subscribe((data) => this.lines = data);
 	}
 }

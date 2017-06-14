@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
 
 import { StarService } from '../star.service';
 
@@ -12,8 +11,8 @@ import { StarService } from '../star.service';
 export class LineComponent implements OnInit {
 	private id: string;
 
-	public line: Observable<any>;
-	public timetable: Observable<any[]>;
+	public line: any;
+	public timetable: any[];
 
 	constructor(
 		private api: StarService,
@@ -25,8 +24,7 @@ export class LineComponent implements OnInit {
 			if (params.id) {
 				this.id = params.id;
 
-				this.line = this.api.getBusLine(params.id);
-				this.timetable = this.api.getBusLineTimetable(params.id);
+				this.api.getBusLine(params.id).subscribe((data) => this.line = data);
 
 				this.getTimetable();
 			}
@@ -34,6 +32,6 @@ export class LineComponent implements OnInit {
 	}
 
 	public getTimetable () {
-		this.timetable = this.api.getBusLineTimetable(this.id);
+		this.api.getBusLineTimetable(this.id).subscribe((data) => this.timetable = data);
 	}
 }
