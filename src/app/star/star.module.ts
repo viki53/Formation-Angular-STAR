@@ -9,6 +9,7 @@ import { StarService } from './star.service';
 import { StarComponent } from './star.component';
 import { HomeComponent } from './home/home.component';
 import { LineComponent } from './line/line.component';
+import { StopComponent } from './stop/stop.component';
 
 export { HomeComponent } from './home/home.component';
 export { LineComponent } from './line/line.component';
@@ -20,6 +21,14 @@ const routes: Routes = [
 			{
 				path: 'line/:id',
 				component: LineComponent
+			},
+			{
+				path: 'stop/:id/line/:lineid',
+				component: StopComponent
+			},
+			{
+				path: 'stop/:id',
+				component: StopComponent
 			},
 			{
 				path: '',
@@ -40,7 +49,8 @@ const routes: Routes = [
 	declarations: [
 		HomeComponent,
 		LineComponent,
-		StarComponent
+		StarComponent,
+		StopComponent
 	],
 	providers: [
 		StarService

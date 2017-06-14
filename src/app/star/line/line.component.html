@@ -1,4 +1,13 @@
 <h2 *ngIf="!(line | async)?.id">Chargement…</h2>
 <h2 *ngIf="(line | async)?.id" [style.color]="(line | async)?.couleurligne">Ligne {{ (line | async)?.nomcourt }} : {{ (line | async)?.nomlong }}</h2>
 
+<ul *ngIf="timetable | async">
+	<li *ngFor="let time of timetable | async">
+		<!-- {{ time | json }} -->
+		<a routerLink="../../stop/{{ time.idarret }}/line/{{ (line | async ).id }}">Arrêt {{ time.idarret }}</a><br>
+		Prévu : {{ time.arriveetheorique | date:'shortTime' }}<br>
+		Réel : {{ time.arrivee | date:'shortTime' }}
+	</li>
+</ul>
+
 <a routerLink="../../">← Retour</a>

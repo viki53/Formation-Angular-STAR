@@ -11,6 +11,7 @@ import { StarService } from '../star.service';
 })
 export class LineComponent implements OnInit {
 	public line: Observable<any>;
+	public timetable: Observable<any[]>;
 
 	constructor(
 		private api: StarService,
@@ -21,6 +22,7 @@ export class LineComponent implements OnInit {
 		this.route.params.subscribe((params) => {
 			if (params.id) {
 				this.line = this.api.getBusLine(params.id);
+				this.timetable = this.api.getBusLineTimetable(params.id);
 			}
 		})
 	}
