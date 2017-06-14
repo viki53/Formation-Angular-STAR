@@ -10,6 +10,8 @@ import { StarService } from '../star.service';
 	styleUrls: ['./line.component.css']
 })
 export class LineComponent implements OnInit {
+	private id: string;
+
 	public line: Observable<any>;
 	public timetable: Observable<any[]>;
 
@@ -21,10 +23,17 @@ export class LineComponent implements OnInit {
 	ngOnInit() {
 		this.route.params.subscribe((params) => {
 			if (params.id) {
+				this.id = params.id;
+
 				this.line = this.api.getBusLine(params.id);
 				this.timetable = this.api.getBusLineTimetable(params.id);
+
+				this.getTimetable();
 			}
 		})
 	}
 
+	public getTimetable () {
+		this.timetable = this.api.getBusLineTimetable(this.id);
+	}
 }

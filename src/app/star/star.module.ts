@@ -23,7 +23,7 @@ const routes: Routes = [
 				component: LineComponent
 			},
 			{
-				path: 'stop/:id/line/:lineid',
+				path: 'line/:lineid/stop/:id',
 				component: StopComponent
 			},
 			{

@@ -1,9 +1,13 @@
 <h2 *ngIf="!(line | async)?.id">Chargement…</h2>
 <h2 *ngIf="(line | async)?.id" [style.color]="(line | async)?.couleurligne">Ligne {{ (line | async)?.nomcourt }} : {{ (line | async)?.nomlong }}</h2>
 
+<div>
+	<button type="button" (click)="getTimetable()" [disabled]="!(line | async)">Rafraîchir</button>
+</div>
+
 <ul *ngIf="timetable | async">
 	<li *ngFor="let time of timetable | async">
-		<a routerLink="/star/stop/{{ time.idarret }}/line/{{ (line | async )?.id }}">Arrêt {{ time.idarret }}</a><br>
+		<a routerLink="/star/line/{{ (line | async )?.id }}/stop/{{ time.idarret }}">Arrêt {{ time.idarret }}</a><br>
 		Prévu : {{ time.arriveetheorique | date:'H:mm:ss' }}<br>
 		Réel : {{ time.arrivee | date:'H:mm:ss' }}
 	</li>
