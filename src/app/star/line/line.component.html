@@ -1,5 +1,5 @@
 <h2 *ngIf="!line?.id">Chargement…</h2>
-<h2 *ngIf="line?.id" [style.color]="line?.couleurligne">Ligne {{ line?.nomcourt }} : {{ line?.nomlong }}</h2>
+<bus-line *ngIf="line?.id" [line]="line"></bus-line>
 
 <div>
 	<button type="button" (click)="getTimetable()" [disabled]="loading">Rafraîchir</button>

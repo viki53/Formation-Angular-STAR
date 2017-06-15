@@ -1,7 +1,7 @@
 <h2 *ngIf="!stop?.id">Chargement…</h2>
 <h2 *ngIf="stop?.id" [style.color]="stop?.couleurligne">Arrêt {{ stop?.nom }} ({{ stop?.mobilier }})</h2>
 
-<h3 *ngIf="line?.id" [style.color]="line?.couleurligne">Ligne {{ line?.nomcourt }} : {{ line?.nomlong }}</h3>
+<bus-line *ngIf="line?.id" [line]="line"></bus-line>
 
 <div>
 	<button type="button" (click)="getTimetable()" [disabled]="loading">Rafraîchir</button>

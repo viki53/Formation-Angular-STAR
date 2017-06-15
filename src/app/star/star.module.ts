@@ -10,10 +10,13 @@ import { StarComponent } from './star.component';
 import { HomeComponent } from './home/home.component';
 import { LineComponent } from './line/line.component';
 import { StopComponent } from './stop/stop.component';
+import { BusLineComponent } from './bus-line/bus-line.component';
 
 export { HomeComponent } from './home/home.component';
 export { LineComponent } from './line/line.component';
 export { StopComponent } from './stop/stop.component';
+
+import { BusLateDirective } from './bus-late.directive';
 
 export { StarService } from './star.service';
 
@@ -53,7 +56,9 @@ const routes: Routes = [
 		HomeComponent,
 		LineComponent,
 		StarComponent,
-		StopComponent
+		StopComponent,
+		BusLineComponent,
+		BusLateDirective
 	],
 	providers: [
 		StarService

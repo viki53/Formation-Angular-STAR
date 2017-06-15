@@ -9,6 +9,6 @@
 </p>
 <ul *ngIf="!loading && lines">
 	<li *ngFor="let line of lines">
-		<a routerLink="./line/{{ line.id }}" [style.color]="line.couleurligne">{{ line.nomcourt }} : {{ line.nomlong }}</a>
+		<bus-line [line]="line"></bus-line>
 	</li>
 </ul>
