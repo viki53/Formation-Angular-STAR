@@ -6,7 +6,6 @@ import { Directive, ElementRef, Input } from '@angular/core';
 export class BusLateDirective {
 	@Input()
 	set busLate(time) {
-		console.dir(time);
 		let theoretical = new Date(time.arriveetheorique);
 		let real = new Date(time.arrivee);
 
@@ -18,8 +17,5 @@ export class BusLateDirective {
 		}
 	};
 
-	constructor(private el: ElementRef) {
-		console.info('busLate', el);
-	}
-
+	constructor(private el: ElementRef) {}
 }

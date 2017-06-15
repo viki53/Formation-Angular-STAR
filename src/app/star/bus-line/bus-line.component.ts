@@ -9,8 +9,7 @@ import { Component, ElementRef, Input, OnInit, Renderer } from '@angular/core';
 export class BusLineComponent implements OnInit {
 	@Input() line;
 
-	constructor(el: ElementRef, rend: Renderer) {
-	}
+	constructor(el: ElementRef, rend: Renderer) {}
 
 	ngOnInit() {
 	}
