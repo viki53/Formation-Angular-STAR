@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+
+*.bus-is-late {
+	background: #ff8377;
+}
+*.bus-is-in-advance {
+	background: #95e87e;
+}

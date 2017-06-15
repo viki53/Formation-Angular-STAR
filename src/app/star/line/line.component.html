@@ -11,7 +11,7 @@
 	Aucune horaire trouvé
 </p>
 <ul *ngIf="!loading && timetable">
-	<li *ngFor="let time of timetable">
+	<li *ngFor="let time of timetable" [busLate]="time">
 		<a routerLink="/star/line/{{ line?.id }}/stop/{{ time.idarret }}">Arrêt {{ time.idarret }}</a><br>
 		Prévu : {{ time.arriveetheorique | date:'H:mm:ss' }}<br>
 		Réel : {{ time.arrivee | date:'H:mm:ss' }}
